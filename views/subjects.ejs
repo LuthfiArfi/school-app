@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partial/style.ejs') %>
+  <meta charset="utf-8">
+  <title>Edit Teacher</title>
+</head>
+
+<body>
+  <%- include('./partial/header.ejs') %>
+  <h1 align="center">
+    <%= title%>
+  </h1>
+  <table align="center">
+    <tr>
+      <th> id </th>
+      <th> Subject Name </th>
+      <th> Teacher List </th>
+      <th> Actions </th>
+      <th> Option </th>
+    </tr>
+    <% data.forEach(item =>{ %>
+    <tr>
+      <td>
+        <%= item.id%>
+      </td>
+      <td>
+        <%= item.name%>
+      </td>
+      <% if (item.dataValues.Teachers.length > 0) { %>
+      <td>
+        <% let count = 1 %>
+        <% item.dataValues.Teachers.forEach((data) => { %>
+        <%= `${count}. ${data.first_name}  ${data.last_name}` %>
+        <% count++ %>
+        <br>
+        <% }) %>
+      </td>
+      <% } else { %>
+      <td> no teacher assigned</td>
+      <% } %>
+      <td> 
+        <a href="/subjects/<%- item.id %>/enrolled-students"><button>enroll student</button></a>
+      </td>
+      <td>
+        <a href="/subjects/edit/<%- item.id%>"><button align="center">edit</button></a> |
+        <a href="/subjects/delete/<%- item.id%>"><button align="center">delete</button></a>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+  <div align="center">
+    <a href="/subjects/add"><button align="center">add subject</button></a>
+    <br>
+    <a href="/"><button type="button" name="button">back to home</button></a>
+  </div>
+</body>
+
+</html>

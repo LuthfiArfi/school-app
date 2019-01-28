@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partial/style.ejs') %>
+  <meta charset="utf-8">
+  <title>Student List</title>
+</head>
+
+<body>
+  <%- include('./partial/header.ejs') %>
+  <h1 align="center">
+    <%= title%>
+  </h1>
+  <br>
+  <% if (message) { %>
+  <div class="success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <h3>
+      <%= message%>
+    </h3>
+  </div>
+  <br>
+  <% } %>
+  <table align="center">
+    <tr>
+      <th> id </th>
+      <th> First Name </th>
+      <th> Last Name </th>
+      <th> Email </th>
+      <th> Actions </th>
+      <th> option </th>
+    </tr>
+    <% data.forEach(item =>{ %>
+    <tr>
+      <td>
+        <%= item.id%>
+      </td>
+      <td>
+        <%= item.first_name%>
+      </td>
+      <td>
+        <%= item.last_name%>
+      </td>
+      <td>
+        <%= item.email%>
+      </td>
+      <% if (item.Subjects.length <= 0) { %>
+      <td>
+        <a href="/students/<%- item.id%>/add-subject"><button>add Subject</button></a>
+      </td>
+      <%} else { %>
+      <td>
+        <% let count = 1 %>
+        <% item.Subjects.forEach( data => { %>
+        <%= `${count}. ${data.name}` %>
+        <% count++; %>
+        <br>
+        <% }) %>
+        <a href="/students/<%- item.id%>/add-subject">
+          <button>add Subject</button></a>
+      </td>
+      <% } %>
+      <td>
+        <a href="/students/edit/<%- item.id%>"><button align="center">edit</button></a> |
+        <a href="/students/delete/<%- item.id%>"><button align="center">delete</button></a>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+  <div align="center">
+    <a href="/students/add"><button align="center">add student</button></a>
+    <br>
+    <a href="/"><button type="button" name="button">back to home</button></a>
+  </div>
+</body>
+
+</html>

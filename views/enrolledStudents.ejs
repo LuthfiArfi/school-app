@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('./partial/style.ejs') %>
+      <head>
+        <meta charset="utf-8">
+        <title></title>
+      </head>
+      <body>
+        <%- include('./partial/header.ejs') %>
+    <h1 align="center"><%= title%></h1>
+    <table align="center">
+      <tr>
+        <th> Name </th>
+        <th> Score </th>
+      </tr>
+      <% data.Students.forEach(item =>{ %>
+        <tr>
+          <td><%= item.first_name %> <%= item.last_name %></td>
+          <td>
+            <% if(item.StudentSubject.score == null){%>
+            <a href="/subjects/<%- item.StudentSubject.id%>/give-score">
+              <button type="button" name="button">Give Score</button>
+              <%} else {%>
+                <%= item.StudentSubject.score%>
+                <%}%>
+            </a>
+          </td>
+        </tr>
+      <%})%>
+    </table>
+    <a href="/subjects">
+      <table align="center">
+        <td>
+          <button align="center" type="button" name="button">back</button>
+        </td>
+      </table>
+    </a>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <%- include('./partial/style.ejs') %>
+  <meta charset="utf-8">
+  <title>Add Subject</title>
+  </head>
+  <body>
+    <%- include('./partial/header.ejs') %>
+    <div class="container">
+      <h1 style="text-align: center">Add Subject Data</h1>
+      <table align="center">
+        <form method="POST">
+          <tr>
+            <div class="form-group">
+              <td><label for="firstName">Subject Name </label></td>
+              <td>:</td>
+              <td><input type="text" class="form-control" name="name" placeholder="Enter subject name"></td>
+            </div>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <button type="submit" class="btn btn-default">Submit</button>
+              <a href="/subjects" align="center">
+                <button type="button" name="button">cancel</button>
+            </td>
+        </form>
+      </table>
+    </div>
+  </body>
+</html>

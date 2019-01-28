@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partial/style.ejs') %>
+  <meta charset="utf-8">
+  <title>Add Teacher</title>
+</head>
+
+<body>
+  <%- include('./partial/header.ejs') %>
+  <div class="container">
+    <h1 style="text-align: center">Add Teacher Data</h1>
+    <br>
+    <% if (err) { %>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <h3>
+        <%= err%>
+      </h3>
+      <br>
+    </div>
+    <% } %>
+    <table align="center">
+      <form method="POST">
+        <tr>
+          <div class="form-group">
+            <td><label for="firstName">First Name </label></td>
+            <td>:</td>
+            <td><input type="text" class="form-control" name="first_name" placeholder="Enter first name"></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <td><label for="lastName">Last Name </label></td>
+            <td>:</td>
+            <td><input type="text" class="form-control" name="last_name" placeholder="Enter first name"></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <td><label for="email">Email</label></td>
+            <td>:</td>
+            <td><input type="email" class="form-control" id="email" placeholder="Enter email" name="email"></td>
+          </div>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+          <td colspan="3">
+            <button type="submit" class="btn btn-default">Submit</button>
+            <a href="/teachers" align="center">
+              <button type="button" name="button">cancel</button>
+          </td>
+      </form>
+    </table>
+  </div>
+</body>
+
+</html>
